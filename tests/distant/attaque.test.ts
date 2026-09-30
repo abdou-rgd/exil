@@ -102,3 +102,21 @@ describe('attaque : alertes', () => {
     }
   });
 });
+
+describe('attaque : plafonds', () => {
+  it('limite à 30 alertes en attente par compte', async () => {
+    const c = await connecte();
+    const series: string[] = [];
+    try {
+      for (let i = 0; i < 3; i++) {
+        const { data, error } = await c.rpc('programmer', { p_type: 'serie', p_situation: 'test attaque', p_format: 'classique' });
+        if (error) throw error;
+        series.push(data as string);
+      }
+      const { error } = await c.rpc('programmer', { p_type: 'rapide', p_situation: 'test attaque', p_format: 'classique' });
+      expect(error?.message).toMatch(/plafond du compte/);
+    } finally {
+      for (const s of series) await c.rpc('annuler_serie', { p_serie: s });
+    }
+  });
+});
