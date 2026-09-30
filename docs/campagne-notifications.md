@@ -22,7 +22,7 @@ Pour que les mesures soient indépendantes, fais **une série par jour au plus**
 | 8 | app ouverte à l'écran | L'Exil ouverte, écran allumé |
 | Une fois | série longue | À lancer dès le jour 1. Ouvre l'app ou le tableau de bord Supabase au moins une fois par semaine, sinon le projet gratuit se met en pause |
 | Une fois | autre : redémarrage | Lance une série, puis redémarre le téléphone après la première alerte |
-| Une fois | autre : hors ligne | Lance un test rapide, passe aussitôt en mode avion, et coupe-le 5 minutes plus tard |
+| Une fois | hors ligne (test rapide) | Lance un test rapide, passe aussitôt en mode avion, et coupe-le **environ 1 min 30 plus tard**, soit 30 s après l'heure prévue. Apple ne garde une alerte que 2 minutes : au-delà, elle expire et c'est attendu. L'alerte apparaît sous « test rapide » ; note l'heure de l'essai |
 
 Ensuite, relance les situations normales jusqu'à atteindre 100 alertes comptées dans la règle. Les amis prolongeront la mesure quand ils installeront le prototype jouable.
 
@@ -31,7 +31,8 @@ Ensuite, relance les situations normales jusqu'à atteindre 100 alertes comptée
 - **Reçues** : le téléphone a accusé réception. En mode Concentration, reçue ne veut pas dire affichée.
 - **≤ 30 s** : part des alertes terminées reçues en moins de 30 secondes.
 - **Échecs** : alertes perdues, échouées, ou reçues avec plus de 30 s de retard.
-- **Règle** : ne compte que les séries classiques en situations normales. Au plus 2 échecs sur au moins 100 alertes : on reste en web app. 8 échecs ou plus : on envisage l'app native. Entre les deux : on prolonge.
+- **Règle** : ne compte que les séries classiques en situations normales. Au plus 2 échecs sur au moins 100 alertes : on reste en web app. 8 échecs ou plus : on envisage l'app native, et cela peut s'afficher avant 100 alertes, puisque le compte d'échecs ne peut plus redescendre. Entre les deux : on prolonge.
+- **Série déclarative** : elle a sa propre ligne, « … (déclaratif) », et n'entre pas dans la règle.
 - **Vue** : tu as touché la notification. Cette information est utile, mais elle ne compte pas dans la règle.
 
 ## Ce qu'on sait déjà (30 septembre 2026)
@@ -51,7 +52,7 @@ Pour décomposer le retard étape par étape :
 
 ## À la fin de la campagne
 
-Change le secret partagé, qui a transité par la file de pg_net :
+Change le secret partagé, qui a transité par la file de pg_net. Fais-le quand aucune série n'est en cours : entre les étapes 2 et 3, les envois seraient refusés.
 
 1. `node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"` affiche un nouveau secret ;
 2. `npx supabase secrets set ENVOI_SECRET=<nouveau secret>` ;

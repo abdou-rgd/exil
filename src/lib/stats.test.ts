@@ -78,6 +78,19 @@ describe('statsParSituation', () => {
   });
 });
 
+describe('statsParSituation et format', () => {
+  it('sépare la série déclarative de la série classique de même situation', () => {
+    const lignes = statsParSituation(
+      [alerte({ accuse_serveur_a: '2026-09-30T12:00:04Z' }), alerte({ format: 'declaratif' })],
+      MAINTENANT,
+    );
+    expect(lignes.map((l) => [l.situation, l.prevues])).toEqual([
+      ['verrouillé', 1],
+      ['verrouillé (déclaratif)', 1],
+    ]);
+  });
+});
+
 describe('regleTroisZones', () => {
   const reussies = (n: number) => Array.from({ length: n }, () => alerte({ accuse_serveur_a: '2026-09-30T12:00:03Z' }));
   const perdues = (n: number) => Array.from({ length: n }, () => alerte());

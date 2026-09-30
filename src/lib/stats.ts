@@ -67,7 +67,9 @@ export function statsParSituation(alertes: AlerteLue[], maintenantMs: number): L
   const groupes = new Map<string, AlerteLue[]>();
   for (const a of alertes) {
     if (a.etat === 'annulee') continue;
-    groupes.set(a.series.situation, [...(groupes.get(a.series.situation) ?? []), a]);
+    // Le format déclaratif a sa propre ligne : il n'entre pas dans la règle et ne doit pas s'y mêler.
+    const cle = a.series.format === 'declaratif' ? `${a.series.situation} (déclaratif)` : a.series.situation;
+    groupes.set(cle, [...(groupes.get(cle) ?? []), a]);
   }
   return [...groupes.entries()]
     .map(([situation, liste]) => {

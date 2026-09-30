@@ -148,7 +148,7 @@ Les amis prolongent la mesure quand ils installent le prototype jouable. Le cons
 
 **Retard** : heure de réception notée par le téléphone, corrigée du décalage d'horloge, moins l'heure prévue. Si le décalage est inconnu, on prend l'heure d'arrivée de l'accusé sur le serveur, ce qui donne une borne haute. L'heure du téléphone passe en premier parce qu'un accusé mis en file hors ligne n'arrive au serveur qu'à la prochaine ouverture de l'app.
 
-**Échec** : alerte perdue, alerte échouée, ou reçue avec un retard de plus de 30 s.
+**Échec** : alerte perdue, alerte échouée, ou reçue avec un retard de plus de 30 s. Une alerte dont le téléphone a accusé réception est jugée sur son retard, même si le serveur l'a notée « échouée » : la mesure porte sur la réception.
 
 **Alertes comptées dans la règle** : séries de 10 au format classique uniquement. Le test rapide, la série longue et la série déclarative sont suivis à part.
 
@@ -159,7 +159,7 @@ Les amis prolongent la mesure quand ils installent le prototype jouable. Le cons
 | Échecs | Décision |
 |---|---|
 | 2 ou moins | On reste en web app. |
-| 8 ou plus | On envisage sérieusement l'app native (Capacitor, qui demande un Mac et 99 $ par an). |
+| 8 ou plus | On envisage sérieusement l'app native (Capacitor, qui demande un Mac et 99 $ par an). Ce verdict peut tomber avant 100 alertes, puisque le nombre d'échecs ne peut plus redescendre. |
 | Entre 3 et 7 | On prolonge la mesure. |
 
 La décision se nuance selon le type d'échec. Un abonnement mort serait réglé par une app native. Une alerte cachée par le mode Concentration ne le serait pas sans le droit *Time Sensitive*. La survie de l'abonnement se juge par appareil, avec la série longue.

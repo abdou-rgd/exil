@@ -66,8 +66,12 @@ async function ouvrir(url: string): Promise<void> {
     const fenetres = await self.clients.matchAll({ type: 'window', includeUncontrolled: true });
     const existante = fenetres[0];
     if (existante) {
-      await existante.focus();
-      return;
+      try {
+        await existante.focus();
+        return;
+      } catch {
+        // fenêtre gelée ou évincée par iOS : on en ouvre une nouvelle
+      }
     }
     await self.clients.openWindow(url);
   } catch {
