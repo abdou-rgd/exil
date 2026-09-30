@@ -2559,7 +2559,7 @@ Attendu : 36 tests réussis.
 
 - [ ] **Étape 7 : vérifier que la tâche planifiée tourne**
 
-Lancer : `npm run sql -- "select jobname, status, start_time from cron.job_run_details order by start_time desc limit 3"`
+Lancer : `npm run sql -- "select j.jobname, d.status, d.start_time from cron.job_run_details d join cron.job j using (jobid) order by d.start_time desc limit 3"`
 Attendu : des lignes `distribuer-alertes` au statut `succeeded`, espacées d'environ 10 secondes.
 
 - [ ] **Étape 8 : commit**
