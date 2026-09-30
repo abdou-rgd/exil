@@ -1,0 +1,4 @@
+"seuil_niveau10","bonus_jour_mode","duree_semaines","sem_n10_Régulière","prop_n10_Régulière","sem_n10_Marathonienne","prop_n10_Marathonienne","sem_n10_Petits pas","prop_n10_Petits pas","sem_n10_Irrégulier","prop_n10_Irrégulier","niveau_reg_fin_sem4","niveau_reg_fin_sem5","niveau_reg_fin_sem6","ratio_marathonienne_reguliere"
+25000,"proportionnel",13,9.4,1,6.5,1,12.5,1,12.9,0.16,6,6.96,7.72,1.51
+27000,"proportionnel",13,10.2,1,7,1,13,0.5,12.8,0.03,5.96,6.7,7.08,1.51
+30000,"proportionnel",13,11.3,1,7.8,1,NA,0,NA,0,5.5,6,6.97,1.51
