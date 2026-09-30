@@ -60,7 +60,17 @@ Style des créatures : petites silhouettes dans de grands paysages peints, plus 
 
 ## 6. Le lore se raconte de façon indirecte
 
-À la manière de Dark Souls ou de Shadow Slave, sans jamais les copier : le lore ne s'expose jamais dans un texte d'explication. Il passe par les paysages, les lieux, les objets et leurs descriptions, et ce que les personnages se disent autour du feu. Dans tes visuels, laisse des indices : une inscription effacée sur un mur du château, un objet abandonné dans la cour, une silhouette au loin. Pour les textes de tes maquettes, reste sobre et laisse des trous ; je te transmettrai un guide de la voix du jeu.
+À la manière de Dark Souls ou de Shadow Slave, sans jamais les copier : le lore ne s'expose jamais dans un texte d'explication. Il passe par les paysages, les lieux, les objets et leurs descriptions, et ce que les personnages se disent autour du feu. Dans tes visuels, laisse des indices : une inscription effacée sur un mur du château, un objet abandonné dans la cour, une silhouette au loin. Pour les textes de tes maquettes, suis la voix du jeu, résumée ici :
+
+- **Une voix grave sur le fond, tendre à la fin.** Des images qui viennent de quatre ateliers : le tissage, la mer, la table, le ciel doré. Le mot le plus lourd arrive en dernier ; les fins restent ouvertes.
+- **La règle de la jointure** : toute tristesse est suivie, dans le même texte, d'une chose chaude (un feu, un repas, une réparation, un retour).
+- **La mélancolie porte sur le monde**, les lieux, les objets, le temps, les créatures ; **jamais sur le joueur**, son travail, ses absences ni ses amis.
+- **L'usure est une trace, pas une perte** : une marche creusée, une corde polie disent qu'on est passé souvent. Rien ne meurt : les bêtes se retirent, le feu couve. Ni sang ni cadavre.
+- **Interface** : trois mots au plus, des verbes de geste, un tutoiement discret. Exemples : « En route » (lancer la séance), « Rentrer au feu » (retour), « Plus tard ».
+- **Objets** : une ligne concrète, une ligne de trace, une ligne qui ouvre. Exemple : *« Braise. Un charbon qui ne brûle plus et n'a pas fini de chauffer. Au château, on paie en braises depuis que l'or ne circule plus. Personne ne dit pourquoi. »*
+- **Notifications** : une phrase courte et chaude, seulement après un fait. Exemple : *« La séance est close. Au feu, ta place est restée chaude. »*
+- **Mots à privilégier** : tiède, tenir, garder, fêlure, recoller, un filet d'or, en voyage, halte, chantier, se retirer, rentrer, veiller. **À éviter** : mort, sang, perdre, échec, raté, manquer, dernière chance, seulement, meilleur, classement, épique, légendaire, productivité, série.
+- **Typographie** : ni point d'exclamation ni émoji ; les deux-points et le point-virgule sont bienvenus.
 
 ## 7. La suite
 
