@@ -1,7 +1,7 @@
 /// <reference lib="webworker" />
 import { cleanupOutdatedCaches, precacheAndRoute } from 'workbox-precaching';
 import { lireDecalage, mettreEnFile, viderFile, type Accuse } from './accuses';
-import { envoyerAccuse } from './api-accuse';
+import { envoyerAccuse, envoyerVue } from './api-accuse';
 import { lireCharge } from './lib/charge-recue';
 
 declare let self: ServiceWorkerGlobalScope;
@@ -30,7 +30,7 @@ self.addEventListener('push', (evenement) => {
   const affichage = self.registration.showNotification(contenu.titre, {
     body: contenu.corps,
     tag: contenu.alerteId ?? undefined,
-    data: { url: contenu.url },
+    data: { url: contenu.url, alerteId: contenu.alerteId, jeton: contenu.jeton },
   });
   evenement.waitUntil(Promise.all([affichage, accuser(contenu.alerteId, contenu.jeton, heureAppareil)]));
 });
@@ -47,20 +47,30 @@ async function accuser(alerteId: string | null, jeton: string | null, heureAppar
   }
 }
 
+type DonneesNotification = { url?: string; alerteId?: string | null; jeton?: string | null } | null;
+
 self.addEventListener('notificationclick', (evenement) => {
   evenement.notification.close();
-  const url = (evenement.notification.data as { url?: string } | null)?.url ?? '/';
-  evenement.waitUntil(ouvrir(url));
+  const donnees = evenement.notification.data as DonneesNotification;
+  // La vue est notée ici même : iOS peut ramener l'app au premier plan sans recharger l'adresse de l'alerte.
+  const vue =
+    donnees?.alerteId && donnees.jeton
+      ? envoyerVue(donnees.alerteId, donnees.jeton).catch(() => undefined)
+      : Promise.resolve();
+  evenement.waitUntil(Promise.all([vue, ouvrir(donnees?.url ?? '/')]));
 });
 
 /** Réutilise la fenêtre de l'app si elle est déjà ouverte, plutôt que d'en ouvrir une seconde. */
 async function ouvrir(url: string): Promise<void> {
-  const fenetres = await self.clients.matchAll({ type: 'window', includeUncontrolled: true });
-  const existante = fenetres[0];
-  if (existante) {
-    await existante.focus();
-    await existante.navigate(url);
-    return;
+  try {
+    const fenetres = await self.clients.matchAll({ type: 'window', includeUncontrolled: true });
+    const existante = fenetres[0];
+    if (existante) {
+      await existante.focus();
+      return;
+    }
+    await self.clients.openWindow(url);
+  } catch {
+    // ouvrir l'app est un confort : la mesure n'en dépend pas
   }
-  await self.clients.openWindow(url);
 }
