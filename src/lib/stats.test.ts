@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { issue, retardSecondes } from './stats';
+import { issue, mediane, regleTroisZones, retardSecondes, seriesEnAttente, statsParSituation } from './stats';
 import type { AlerteLue, FormatSerie, TypeSerie } from './types';
 
 export function alerte(
@@ -48,5 +48,75 @@ describe('issue', () => {
     expect(issue(alerte(), MAINTENANT)).toBe('perdue');
     expect(issue(alerte({ prevue_a: '2026-09-30T12:55:00Z' }), MAINTENANT)).toBe('en_attente');
     expect(issue(alerte({ etat: 'prevue', prevue_a: '2026-09-30T14:00:00Z' }), MAINTENANT)).toBe('en_attente');
+  });
+});
+
+describe('mediane', () => {
+  it('prend la valeur centrale ou la moyenne des deux centrales', () => {
+    expect(mediane([3, 1, 2])).toBe(2);
+    expect(mediane([4, 1, 2, 3])).toBe(2.5);
+    expect(mediane([])).toBeNull();
+  });
+});
+
+describe('statsParSituation', () => {
+  it('résume chaque situation', () => {
+    const lignes = statsParSituation(
+      [
+        alerte({ accuse_serveur_a: '2026-09-30T12:00:04Z' }),
+        alerte({ accuse_serveur_a: '2026-09-30T12:00:40Z' }),
+        alerte(),
+        alerte({ situation: 'Wi-Fi seul', accuse_serveur_a: '2026-09-30T12:00:02Z' }),
+        alerte({ situation: 'Wi-Fi seul', etat: 'annulee' }),
+      ],
+      MAINTENANT,
+    );
+    expect(lignes).toEqual([
+      { situation: 'verrouillé', prevues: 3, recues: 2, sous30: 1, partSous30: 1 / 3, medianeS: 22, maxS: 40, echecs: 2 },
+      { situation: 'Wi-Fi seul', prevues: 1, recues: 1, sous30: 1, partSous30: 1, medianeS: 2, maxS: 2, echecs: 0 },
+    ]);
+  });
+});
+
+describe('regleTroisZones', () => {
+  const reussies = (n: number) => Array.from({ length: n }, () => alerte({ accuse_serveur_a: '2026-09-30T12:00:03Z' }));
+  const perdues = (n: number) => Array.from({ length: n }, () => alerte());
+
+  it('attend 100 alertes avant de conclure', () => {
+    expect(regleTroisZones(reussies(50), MAINTENANT)).toEqual({ n: 50, echecs: 0, zone: 'insuffisant' });
+  });
+  it('reste en web app avec au plus 2 échecs sur 100', () => {
+    expect(regleTroisZones([...reussies(98), ...perdues(2)], MAINTENANT).zone).toBe('web_app');
+  });
+  it('prolonge entre 3 et 7 échecs', () => {
+    expect(regleTroisZones([...reussies(97), ...perdues(3)], MAINTENANT).zone).toBe('prolonger');
+  });
+  it('envisage le natif dès 8 échecs, même avant 100 alertes', () => {
+    expect(regleTroisZones([...reussies(12), ...perdues(8)], MAINTENANT).zone).toBe('natif');
+  });
+  it('ne compte que les séries classiques en situation normale', () => {
+    const exclues = [
+      alerte({ situation: 'Concentration, app non autorisée' }),
+      alerte({ situation: 'autre : redémarrage' }),
+      alerte({ type: 'longue' }),
+      alerte({ type: 'rapide' }),
+      alerte({ format: 'declaratif' }),
+      alerte({ etat: 'annulee' }),
+      alerte({ prevue_a: '2026-09-30T12:59:00Z' }),
+    ];
+    expect(regleTroisZones(exclues, MAINTENANT)).toEqual({ n: 0, echecs: 0, zone: 'insuffisant' });
+  });
+});
+
+describe('seriesEnAttente', () => {
+  it('liste les séries qui ont encore des alertes prévues', () => {
+    expect(
+      seriesEnAttente([
+        alerte({ serie_id: 's1', etat: 'prevue' }),
+        alerte({ serie_id: 's1', etat: 'prevue' }),
+        alerte({ serie_id: 's1' }),
+        alerte({ serie_id: 's2' }),
+      ]),
+    ).toEqual([{ serieId: 's1', situation: 'verrouillé', restantes: 2 }]);
   });
 });
