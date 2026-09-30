@@ -25,7 +25,7 @@ Tes trois propositions de nuit (1a sarcelle, 1b violet de l'emblème, 1c comprom
 
 ## 3. Les braises remplacent l'or
 
-La monnaie s'appelle désormais **les braises**, pour prolonger l'imaginaire du feu de camp. Garde ta feuille portée par le vent pour l'Élan (la progression, qui ne baisse jamais), et remplace la pièce percée par **une braise en pixel art**, lisible à 16, 24 et 32 pixels et distincte de la feuille par la forme, pas seulement par la couleur. Sur les écrans, « 62 or » devient « 62 braises ».
+La monnaie s'appelle désormais **les braises**, pour prolonger l'imaginaire du feu de camp. Pour l'Élan (la progression, qui ne baisse jamais), remplace ta feuille de sauge par **une feuille de jade à trois pointes**, d'après sa description : « Une feuille de jade, dont les propriétés semblent hors de ce monde. Tri-fourchée, légère comme une plume et dense comme une étoile, elle pointe toujours dans la même direction. » Remplace aussi la pièce percée par **une braise en pixel art**, lisible à 16, 24 et 32 pixels et distincte de la feuille par la forme, pas seulement par la couleur. Sur les écrans, « 62 or » devient « 62 braises ».
 
 ## 4. Nouvelles classes, qui remplacent guerrier, mage, prêtre et voleuse
 
