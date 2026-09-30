@@ -1,0 +1,39 @@
+{
+  "name": "exil",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -p tsconfig.json && tsc -p tsconfig.sw.json && vite build",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "test:distant": "vitest run --config vitest.distant.config.ts",
+    "icones": "node scripts/icones.mjs",
+    "secrets": "node scripts/preparer-secrets.mjs",
+    "sql": "node scripts/sql.mjs",
+    "db:push": "node scripts/db-push.mjs"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.117.2",
+    "idb-keyval": "^6.3.0",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "workbox-precaching": "^7.4.1"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.3",
+    "@types/pg": "^8.23.1",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.1.1",
+    "fake-indexeddb": "^6.2.5",
+    "pg": "^8.23.0",
+    "supabase": "^2.118.0",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.1",
+    "vite-plugin-pwa": "^1.3.0",
+    "vitest": "^5.0.3",
+    "web-push": "^3.6.7"
+  }
+}
