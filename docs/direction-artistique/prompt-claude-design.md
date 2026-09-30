@@ -20,7 +20,7 @@ Principes du produit, qui guident aussi l'image :
 - **La contrée s'appelle l'Exil.** L'app s'appelle aussi « L'Exil » (nom provisoire, privé).
 - **Le château de la guilde est en ruine** ; les amis le rénovent ensemble par leur effort. Un membre absent ne coûte rien aux autres. Le château compte 5 à 7 bâtiments, chacun avec trois états (ruine, chantier, restauré), et chaque bâtiment restauré débloque une fonction. **La liste des bâtiments n'est pas encore décidée** : tu peux proposer des candidats, clairement marqués comme propositions.
 - **Le feu de camp**, point de départ, est dans la cour du château. C'est l'écran d'accueil : on s'y retrouve avant et après les séances.
-- **Deux ressources** : l'**Élan**, gagné par le temps de travail et les méthodes, fait monter le personnage ; l'**or**, gagné en tenant ses engagements, se dépense en cosmétiques et en rénovation. (Le rôle exact de l'Élan pourrait encore changer ; dessine-les comme deux ressources distinctes.)
+- **Deux ressources** : l'**Élan**, la progression, fait monter le personnage et ne baisse jamais ; les **braises**, la monnaie, se gagnent en tenant ses engagements et se dépensent en cosmétiques et en rénovation. Les braises prolongent l'imaginaire du feu de camp.
 - **Quatre classes** de personnages : guerrier, mage, prêtre, voleuse.
 - **L'emblème** est déjà choisi : une lune de sang en pixel art, fêlée par une barre horizontale en zigzag, comme la lettre thêta, et recollée à l'or, à la manière du kintsugi. La cassure réparée est le symbole d'un groupe qui se reconstruit ensemble. Voir la pièce jointe `icone-512.png`.
 
@@ -88,7 +88,7 @@ Commence par le **lot 1**, montre-le-moi, et attends mon accord avant le lot 2.
 
 1. Une planche de tendance qui fixe les deux faces (jour et nuit) et la façon dont les sprites pixel s'intègrent dans les décors peints.
 2. Le kit d'interface : étiquettes de papier pour les boutons, jauge en lavis qui se remplit, sceau de cire (semaine validée), cartes, onglets, champs, états (appuyé, désactivé), dans les deux faces.
-3. Les icônes des deux ressources, Élan et or, en pixel art, lisibles à 16, 24 et 32 pixels.
+3. Les icônes des deux ressources, Élan et braises, en pixel art, lisibles à 16, 24 et 32 pixels.
 4. Le feu de camp dans la cour du château en ruine, de jour et de nuit, avec la flamme en trois intensités (braise, flamme, grand feu) qui reflètent la fraîcheur de la semaine.
 5. Les quatre personnages autour du feu : pour chaque classe, une pose assise au feu et une pose de dos (« partis réviser »), au format des sprites existants.
 6. Les écrans clés, au format iPhone (390 × 844) :
@@ -118,7 +118,7 @@ Commence par le **lot 1**, montre-le-moi, et attends mon accord avant le lot 2.
 - **Couleurs** : fournis la palette finale sous forme de variables CSS et de fichier JSON de jetons (nom, hex, usage, contraste).
 - **Accessibilité** : vrais boutons, contraste suffisant, zones tactiles d'au moins 44 px, pas d'information portée par la couleur seule.
 - **Pas d'emoji, pas d'images de banques d'images, pas de visuels générés qui imitent une œuvre existante.**
-- **Nommage des fichiers** : `categorie-nom-variante.png`, par exemple `sprite-mage-assis.png`, `ressource-elan-24.png` ou `feu-nuit-grand.webp`.
+- **Nommage des fichiers** : `categorie-nom-variante.png`, par exemple `sprite-mage-assis.png`, `ressource-braises-24.png` ou `feu-nuit-grand.webp`.
 
 ## Pièces jointes à ajouter à ce prompt
 
