@@ -5,6 +5,7 @@ import { envoyerAccuse, envoyerVue } from './api-accuse';
 import { Etat } from './composants/Etat';
 import { Installation } from './composants/Installation';
 import { ListeAlertes } from './composants/ListeAlertes';
+import { Resultats } from './composants/Resultats';
 import { Tests } from './composants/Tests';
 import { estInstallee } from './lib/plateforme';
 import type { AlerteLue } from './lib/types';
@@ -74,7 +75,8 @@ export function App() {
       {pret && (
         <>
           <Etat />
-          <Tests auChangement={recharger} />
+          <Tests alertes={alertes} auChangement={recharger} />
+          <Resultats alertes={alertes} />
           <ListeAlertes alertes={alertes} />
         </>
       )}

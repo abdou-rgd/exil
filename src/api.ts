@@ -16,3 +16,9 @@ export async function lireAlertes(): Promise<AlerteLue[]> {
   if (error) throw new Error(error.message);
   return data as unknown as AlerteLue[];
 }
+
+export async function annulerSerie(serieId: string): Promise<{ annulees: number; trop_tard: number }> {
+  const { data, error } = await supabase.rpc('annuler_serie', { p_serie: serieId });
+  if (error) throw new Error(error.message);
+  return (data as { annulees: number; trop_tard: number }[])[0];
+}

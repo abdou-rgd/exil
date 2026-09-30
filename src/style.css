@@ -39,7 +39,7 @@ label { display: block; margin: 0.25rem 0; }
 .zone { font-weight: 600; }
 .table-defilante { overflow-x: auto; }
 table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
-th, td { text-align: left; padding: 0.3rem; border-bottom: 1px solid var(--trait); }
+th, td { text-align: left; padding: 0.3rem 0.5rem 0.3rem 0; border-bottom: 1px solid var(--trait); white-space: nowrap; }
 .liste { list-style: none; padding: 0; margin: 0; font-size: 0.9rem; }
 .liste li { padding: 0.4rem 0; border-bottom: 1px solid var(--trait); }
 ol li { margin: 0.4rem 0; }
