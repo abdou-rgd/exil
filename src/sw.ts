@@ -1,6 +1,6 @@
 /// <reference lib="webworker" />
 import { cleanupOutdatedCaches, precacheAndRoute } from 'workbox-precaching';
-import { lireDecalage, mettreEnFile, type Accuse } from './accuses';
+import { lireDecalage, mettreEnFile, viderFile, type Accuse } from './accuses';
 import { envoyerAccuse } from './api-accuse';
 import { lireCharge } from './lib/charge-recue';
 
@@ -35,15 +35,13 @@ self.addEventListener('push', (evenement) => {
   evenement.waitUntil(Promise.all([affichage, accuser(contenu.alerteId, contenu.jeton, heureAppareil)]));
 });
 
+/** L'accusé est rangé d'abord : si iOS arrête le service worker pendant l'envoi, il partira à la prochaine ouverture. */
 async function accuser(alerteId: string | null, jeton: string | null, heureAppareil: string): Promise<void> {
   if (!alerteId || !jeton) return;
   try {
     const accuse: Accuse = { alerte_id: alerteId, jeton, heure_appareil: heureAppareil, decalage_ms: await lireDecalage() };
-    try {
-      await envoyerAccuse(accuse);
-    } catch {
-      await mettreEnFile(accuse);
-    }
+    await mettreEnFile(accuse);
+    await viderFile(envoyerAccuse);
   } catch {
     // ne jamais faire échouer l'affichage
   }
@@ -52,5 +50,17 @@ async function accuser(alerteId: string | null, jeton: string | null, heureAppar
 self.addEventListener('notificationclick', (evenement) => {
   evenement.notification.close();
   const url = (evenement.notification.data as { url?: string } | null)?.url ?? '/';
-  evenement.waitUntil(self.clients.openWindow(url));
+  evenement.waitUntil(ouvrir(url));
 });
+
+/** Réutilise la fenêtre de l'app si elle est déjà ouverte, plutôt que d'en ouvrir une seconde. */
+async function ouvrir(url: string): Promise<void> {
+  const fenetres = await self.clients.matchAll({ type: 'window', includeUncontrolled: true });
+  const existante = fenetres[0];
+  if (existante) {
+    await existante.focus();
+    await existante.navigate(url);
+    return;
+  }
+  await self.clients.openWindow(url);
+}

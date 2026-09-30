@@ -5,7 +5,8 @@ import { construireCharge, egaux, type LigneEnvoi } from './outils.ts';
 
 declare const EdgeRuntime: { waitUntil(promesse: Promise<unknown>): void };
 
-const sql = postgres(Deno.env.get('SUPABASE_DB_URL')!, { prepare: false, max: 2 });
+const sql = postgres(Deno.env.get('SUPABASE_DB_URL')!, { prepare: false, max: 2, connect_timeout: 10, idle_timeout: 20 });
+const DELAI_ENVOI_MS = 8000;
 const SECRET = Deno.env.get('ENVOI_SECRET') ?? '';
 const APP_URL = Deno.env.get('APP_URL') ?? '';
 
@@ -39,7 +40,7 @@ async function traiterLot(ids: string[]): Promise<void> {
     try {
       await traiter(id);
     } catch (erreur) {
-      console.error(`alerte ${id}`, erreur);
+      console.error(`alerte ${id} : ${(erreur as Error).message}`);
     }
   }
 }
@@ -47,20 +48,32 @@ async function traiterLot(ids: string[]): Promise<void> {
 async function traiter(id: string): Promise<void> {
   const [ligne] = await sql<LigneEnvoi[]>`select * from prive.preparer_envoi(${id}::uuid)`;
   if (!ligne) return; // annulée entre-temps, ou abonnement absent
-  let code = 0;
+  let code = 0; // 0 = pas de réponse (réseau, délai dépassé)
   let apnsId: string | null = null;
   try {
     const reponse = await webpush.sendNotification(
       { endpoint: ligne.endpoint, keys: { p256dh: ligne.p256dh, auth: ligne.auth } },
       JSON.stringify(construireCharge(ligne, APP_URL)),
-      { TTL: 120, urgency: 'high', topic: ligne.serie_id.replaceAll('-', '') },
+      { TTL: 120, urgency: 'high', topic: ligne.serie_id.replaceAll('-', ''), timeout: DELAI_ENVOI_MS },
     );
     code = reponse.statusCode;
     apnsId = reponse.headers['apns-id'] ?? null;
   } catch (erreur) {
-    code = (erreur as { statusCode?: number }).statusCode ?? 0;
-    console.error(`envoi ${id}`, erreur);
+    const e = erreur as { statusCode?: number; message?: string };
+    code = e.statusCode ?? 0;
+    // Pas d'objet d'erreur complet dans les journaux : il contient l'adresse de l'appareil.
+    console.error(`envoi ${id} : code ${code} ${e.message ?? ''}`);
   }
   // Écrit juste après chaque réponse : un plantage plus loin ne provoque pas de double envoi.
-  await sql`select prive.noter_reponse(${id}::uuid, ${code}, ${apnsId})`;
+  await noterReponse(id, code, apnsId);
+}
+
+/** Une seconde tentative évite qu'un accroc de la base fasse renvoyer une alerte déjà livrée. */
+async function noterReponse(id: string, code: number, apnsId: string | null): Promise<void> {
+  try {
+    await sql`select prive.noter_reponse(${id}::uuid, ${code}, ${apnsId})`;
+  } catch {
+    await new Promise((r) => setTimeout(r, 500));
+    await sql`select prive.noter_reponse(${id}::uuid, ${code}, ${apnsId})`;
+  }
 }

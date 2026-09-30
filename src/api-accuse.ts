@@ -1,13 +1,18 @@
 import type { Accuse } from './accuses';
 import { config } from './config';
 
+const DELAI_MS = 8000;
+
+/** Réussit aussi sur un refus définitif (4xx hors 408 et 429) : réessayer ne le corrigerait pas. */
 async function appeler(fonction: string, corps: unknown): Promise<void> {
   const reponse = await fetch(`${config.supabaseUrl}/rest/v1/rpc/${fonction}`, {
     method: 'POST',
     headers: { apikey: config.clePubliable, 'Content-Type': 'application/json' },
     body: JSON.stringify(corps),
+    signal: AbortSignal.timeout(DELAI_MS),
   });
-  if (!reponse.ok) throw new Error(`${fonction} : ${reponse.status}`);
+  const refusDefinitif = reponse.status >= 400 && reponse.status < 500 && reponse.status !== 408 && reponse.status !== 429;
+  if (!reponse.ok && !refusDefinitif) throw new Error(`${fonction} : ${reponse.status}`);
 }
 
 export function envoyerAccuse(a: Accuse): Promise<void> {

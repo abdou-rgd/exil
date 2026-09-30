@@ -204,6 +204,25 @@ describe('preparer_envoi et noter_reponse', () => {
       expect((await lireAlerte(c, a.id)).recue_ef_a).not.toBeNull();
     }));
 
+  it('ne livre une même tentative qu’à une seule exécution de la fonction', () =>
+    avecTransaction(async (c) => {
+      const uid = await creerUtilisateur(c);
+      await creerAbonnement(c, uid);
+      const a = await creerAlerte(c, await creerSerie(c, uid), uid, { etat: 'en_cours', tentatives: 1, priseIlYa: '1 second' });
+      const premiere = await c.query('select * from prive.preparer_envoi($1)', [a.id]);
+      const seconde = await c.query('select * from prive.preparer_envoi($1)', [a.id]);
+      expect(premiere.rows).toHaveLength(1);
+      expect(seconde.rows).toEqual([]);
+    }));
+
+  it('n’horodate pas de réponse d’Apple quand il n’y en a pas eu', () =>
+    avecTransaction(async (c) => {
+      const uid = await creerUtilisateur(c);
+      const a = await creerAlerte(c, await creerSerie(c, uid), uid, { etat: 'en_cours', tentatives: 1, priseIlYa: '1 second' });
+      await c.query('select prive.noter_reponse($1, 0, null)', [a.id]);
+      expect(await lireAlerte(c, a.id)).toMatchObject({ etat: 'en_cours', code_apple: 0, reponse_apple_a: null });
+    }));
+
   it('ne renvoie rien pour une alerte annulée entre-temps', () =>
     avecTransaction(async (c) => {
       const uid = await creerUtilisateur(c);

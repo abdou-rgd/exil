@@ -91,7 +91,8 @@ describe('attaque : alertes', () => {
   });
 
   it('refuse l’Edge Function sans secret ou avec un faux secret', async () => {
-    for (const entetes of [{}, { 'x-envoi-secret': 'faux' }]) {
+    const essais: Record<string, string>[] = [{}, { 'x-envoi-secret': 'faux' }];
+    for (const entetes of essais) {
       const reponse = await fetch(`${URL_SUPABASE}/functions/v1/envoyer`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', ...entetes },
