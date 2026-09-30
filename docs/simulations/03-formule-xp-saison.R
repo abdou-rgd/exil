@@ -26,7 +26,7 @@ durees    <- c(13, 15)    # semaines de la saison
 p <- list(
   paliers    = c(0, 120, 300, 480, Inf),  # minutes de concentration cumulées dans la journée
   coef       = c(1.0, 0.6, 0.3, 0.1),     # XP par minute dans chaque palier (variante B)
-  bonus_jour_mode = "tout_ou_rien",  # "tout_ou_rien" (comme 01 : versé si crédit = 1) ou
+  bonus_jour_mode = "proportionnel",  # choisi le 30/09/2026 ; "tout_ou_rien" (comme 01 : versé si crédit = 1) ou
                                      # "proportionnel" (bonus × min(1, minutes / objectif))
   objectif_min   = 30,    # plancher de l'objectif du jour (un objectif plus petit est porté à 30)
   bonus_jour     = 250,   # objectif du jour tenu ; plein tarif à partir de objectif_plein
