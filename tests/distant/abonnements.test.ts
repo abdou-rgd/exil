@@ -49,6 +49,30 @@ describe('abonnements', () => {
       ).rejects.toThrow(/permission denied/);
     }));
 
+  it('ne garde un même téléphone que sous un seul compte', () =>
+    avecTransaction(async (c) => {
+      const ancien = await creerUtilisateur(c);
+      const nouveau = await creerUtilisateur(c);
+      await agirEnTantQue(c, ancien);
+      await c.query(`select public.enregistrer_abonnement($1, 'p', 'a', 'ua')`, [ENDPOINT]);
+      await redevenirAdmin(c);
+      await agirEnTantQue(c, nouveau);
+      await c.query(`select public.enregistrer_abonnement($1, 'p', 'a', 'ua')`, [ENDPOINT]);
+      await redevenirAdmin(c);
+      const { rows } = await c.query('select user_id from prive.abonnements where endpoint = $1', [ENDPOINT]);
+      expect(rows).toEqual([{ user_id: nouveau }]);
+    }));
+
+  it('ferme au client toute nouvelle fonction du schéma privé', () =>
+    avecTransaction(async (c) => {
+      await c.query('create function prive.essai_droits() returns int language sql as $$ select 1 $$');
+      const { rows } = await c.query(
+        `select has_function_privilege('authenticated', 'prive.essai_droits()', 'execute') as authentifie,
+                has_function_privilege('anon', 'prive.essai_droits()', 'execute') as anonyme`,
+      );
+      expect(rows).toEqual([{ authentifie: false, anonyme: false }]);
+    }));
+
   it('donne l’heure du serveur à un compte', () =>
     avecTransaction(async (c) => {
       const uid = await creerUtilisateur(c);

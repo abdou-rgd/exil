@@ -54,9 +54,10 @@ export function Etat() {
   async function activer() {
     try {
       await activerNotifications();
-      await rafraichir();
     } catch (e) {
       setErreur((e as Error).message);
+    } finally {
+      await rafraichir();
     }
   }
 

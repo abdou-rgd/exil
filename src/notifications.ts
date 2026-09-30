@@ -4,6 +4,8 @@ import { supabase } from './supabase';
 
 export type EtatAbonnement = { abonne: boolean; cree_a: string | null; vu_a: string | null };
 
+const DELAI_SERVICE_WORKER_MS = 10_000;
+
 export function notificationsDisponibles(): boolean {
   return 'serviceWorker' in navigator && 'PushManager' in window && 'Notification' in window;
 }
@@ -15,15 +17,33 @@ export async function activerNotifications(): Promise<NotificationPermission> {
   return permission;
 }
 
+/** navigator.serviceWorker.ready ne se résout jamais sans service worker : on borne l'attente. */
+function serviceWorkerPret(): Promise<ServiceWorkerRegistration> {
+  return Promise.race([
+    navigator.serviceWorker.ready,
+    new Promise<never>((_, rejeter) =>
+      setTimeout(() => rejeter(new Error('Service worker absent : recharge l’app')), DELAI_SERVICE_WORKER_MS),
+    ),
+  ]);
+}
+
+function memesOctets(a: ArrayBuffer | null, b: Uint8Array): boolean {
+  if (!a || a.byteLength !== b.length) return false;
+  const vue = new Uint8Array(a);
+  return vue.every((octet, i) => octet === b[i]);
+}
+
 /** Recrée l'abonnement si besoin et le renvoie au serveur : iOS ne prévient pas quand il change. */
 export async function synchroniserAbonnement(): Promise<void> {
-  const enregistrement = await navigator.serviceWorker.ready;
-  const abonnement =
-    (await enregistrement.pushManager.getSubscription()) ??
-    (await enregistrement.pushManager.subscribe({
-      userVisibleOnly: true,
-      applicationServerKey: base64UrlVersOctets(config.vapidPublique),
-    }));
+  const enregistrement = await serviceWorkerPret();
+  const cle = base64UrlVersOctets(config.vapidPublique);
+  let abonnement = await enregistrement.pushManager.getSubscription();
+  // Un abonnement lié à une ancienne clé VAPID ne recevrait plus rien : on le remplace.
+  if (abonnement && !memesOctets(abonnement.options.applicationServerKey, cle)) {
+    await abonnement.unsubscribe();
+    abonnement = null;
+  }
+  abonnement ??= await enregistrement.pushManager.subscribe({ userVisibleOnly: true, applicationServerKey: cle });
   const json = abonnement.toJSON();
   if (!json.endpoint || !json.keys?.p256dh || !json.keys?.auth) throw new Error('Abonnement incomplet');
   const { error } = await supabase.rpc('enregistrer_abonnement', {
