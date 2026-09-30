@@ -45,12 +45,20 @@ Planche de direction artistique publiée : https://claude.ai/artifact/Rhkd2EGriz
 
 ## Décisions encore ouvertes
 
-| Décision | Recommandation de la session de cadrage |
+*Mise à jour du 30 septembre 2026 (session de développement) : les quatre décisions ci-dessous sont tranchées. Le détail est dans `docs/superpowers/specs/2026-09-30-etape-0-notifications-design.md`, section 1.*
+
+| Décision | Choix d'Abdallah |
 |---|---|
-| Poids du temps dans l'XP | Variante B (les engagements d'abord), voir `docs/simulations/01-formule-xp.R` |
-| Nom public de l'app | Plus tard, distinct de « Lexile » |
-| Détail des bâtiments du château et de ce que chacun débloque | Cinq à sept bâtiments, trois états chacun, chaque bâtiment restauré débloque une fonction |
-| Durées de minuteur par défaut | 25/5 par défaut, réglables, mode pauses libres |
+| Poids du temps dans l'XP | **Variante B** (niveaux et remise semestrielle encore à confirmer avec le conseiller avant l'étape 1) |
+| Nom public de l'app | Plus tard ; **nom provisoire « L'Exil »** |
+| Détail des bâtiments du château | **Principe seul** ; la liste se décide au début de la partie sociale |
+| Durées de minuteur | **Choix à la première séance** : 25/5, 50/10 ou pauses libres |
+
+Nouvelles décisions et indications :
+
+- **Étape 0 courte**, et sa campagne de mesure tourne en fond pendant la construction du jeu.
+- **Objectif prioritaire : un prototype jouable et social pour les amis.** Le découpage des étapes 1 et 2 est à revoir dans ce sens.
+- **Chat en jeu : décision ouverte.** Il va contre la décision 1 (aucun texte libre partagé). À trancher lors de la spécification de la partie sociale.
 
 ## Ordre de travail
 
