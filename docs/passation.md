@@ -64,7 +64,7 @@ Nouvelles décisions et indications :
 
 1. **Cadrage restant** : confirmer les décisions ouvertes avec Abdallah, une question à la fois, puis écrire la spécification dans `docs/superpowers/specs/` et le plan dans `docs/superpowers/plans/` (compétences `superpowers:brainstorming` puis `superpowers:writing-plans`). Ne pas coder avant la validation du plan.
 2. **Initialiser le dépôt git** et y mettre `docs/` en premier commit.
-3. **Étape 0, prototype de notification** : page installable, bouton « me notifier dans N minutes », table de notifications dues, tâche pg_cron toutes les 10 à 15 secondes, Edge Function d'envoi. Test sur deux ou trois iPhone : téléphone verrouillé 25 minutes, mode Concentration, 14 jours sans ouvrir l'app. Critère : 95 % des alertes en moins de 30 secondes. En dessous, en parler au conseiller avant de continuer.
+3. *Construite le 30/09/2026 ; campagne en cours, protocole dans `docs/campagne-notifications.md`, app sur https://exil-theta.vercel.app.* **Étape 0, prototype de notification** : page installable, bouton « me notifier dans N minutes », table de notifications dues, tâche pg_cron toutes les 10 à 15 secondes, Edge Function d'envoi. Test sur deux ou trois iPhone : téléphone verrouillé 25 minutes, mode Concentration, 14 jours sans ouvrir l'app. Critère : 95 % des alertes en moins de 30 secondes. En dessous, en parler au conseiller avant de continuer.
 4. **Étape 1, le cœur en solo** : minuteur, journal en deux gestes, intention de la semaine et jours de repos, calendrier de régularité, Élan et niveau, écran de retour de séance.
 5. **Étape 2, la tablée** : groupe sur invitation, séance commune par code, chantier du château.
 6. **Étape 3, la profondeur** : personnages, cosmétiques, bâtiments dévoilés un par un.
