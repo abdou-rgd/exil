@@ -19,6 +19,7 @@ Tes trois propositions de nuit (1a sarcelle, 1b violet de l'emblème, 1c comprom
 
 - Garde **le dessin de l'emblème** : la lune pixel, ses cratères et sa fêlure d'or en zigzag, **symétrique, sans décalage entre les deux moitiés** (voir l'icône jointe).
 - J'adore la lune qui devient de plus en plus rouge. Elle sert maintenant de **compte à rebours vers le boss de la semaine** : pâle en début de semaine, elle rougit jour après jour jusqu'au **dimanche à 14 h**, où elle est rouge en plein jour. Propose-moi les étapes de cette montée, par exemple une par jour.
+- **Le dimanche s'appelle l'Aurum Rubrum**, « le rouge doré » : la lune rouge et son anneau d'or. Ce jour-là, les créatures sont plus fortes. Il mérite une ambiance à part (ciel, lumière, écran d'annonce).
 - **Chaque boss vaincu ajoute un filet d'or à la fêlure.** Au fil de la saison, la lune se couvre de coutures dorées.
 - Ta « lune commune » (tons glissés vers le rouge de la Veillée) peut servir d'étape haute de ce dégradé ; la lune de l'emblème reste la référence du dessin.
 
@@ -28,7 +29,7 @@ La monnaie s'appelle désormais **les braises**, pour prolonger l'imaginaire du 
 
 ## 4. Nouvelles classes, qui remplacent guerrier, mage, prêtre et voleuse
 
-Les quatre sprites joints ne représentent plus les classes : garde leur technique (16 × 20, contour, palette), pas leurs costumes. Les nouvelles classes ont chacune un pouvoir fondé sur **une loi physique**, avec des limites logiques. Une règle vaut pour toutes : les pouvoirs agissent sur le corps de leur porteur et sur la matière inerte, jamais sur un autre être vivant. On choisit sa classe dès l'inscription.
+Les quatre sprites joints ne représentent plus les classes : garde leur technique (16 × 20, contour, palette), pas leurs costumes. Les nouvelles classes ont chacune un pouvoir fondé sur **une loi physique**, avec des limites logiques. Une règle vaut pour toutes : les pouvoirs agissent sur le corps de leur porteur et sur la matière inerte, jamais sur un autre être vivant. On choisit sa classe dès l'inscription. Les classes ne sont liées à aucune méthode de travail : chacun révise comme il veut.
 
 | Classe | Loi | En une phrase | Silhouette du sprite |
 |---|---|---|---|
@@ -57,7 +58,11 @@ Bestiaire de l'automne, pour le lot 2 (ne le dessine pas encore, garde-le en tê
 
 Style des créatures : petites silhouettes dans de grands paysages peints, plus inquiétantes par leur comportement que par leur taille ; rien de gore.
 
-## 6. La suite
+## 6. Le lore se raconte de façon indirecte
+
+À la manière de Dark Souls ou de Shadow Slave, sans jamais les copier : le lore ne s'expose jamais dans un texte d'explication. Il passe par les paysages, les lieux, les objets et leurs descriptions, et ce que les personnages se disent autour du feu. Dans tes visuels, laisse des indices : une inscription effacée sur un mur du château, un objet abandonné dans la cour, une silhouette au loin. Pour les textes de tes maquettes, reste sobre et laisse des trous ; je te transmettrai un guide de la voix du jeu.
+
+## 7. La suite
 
 Pour avancer, présente-moi d'abord :
 
