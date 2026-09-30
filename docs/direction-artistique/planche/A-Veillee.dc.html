@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Séance en cours, direction Veillée</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,500;1,400&family=Alegreya+Sans:wght@400;500;700&display=swap">
+<style>
+body{margin:0;font-family:'Alegreya Sans','Trebuchet MS',sans-serif;background:#051e26;color:#f8f7e9}
+</style>
+</helmet>
+<div style="position: relative; width: 390px; height: 844px; box-sizing: border-box; overflow: hidden; background: #051e26; color: #f8f7e9; font-variant-numeric: lining-nums">
+<svg aria-hidden="true" width="390" height="844" viewBox="0 0 390 844" style="position: absolute; left: 0; top: 0">
+<defs>
+<filter id="a-wash" x="-30%" y="-30%" width="160%" height="160%">
+<feTurbulence type="fractalNoise" baseFrequency="0.011" numOctaves="3" seed="4" result="bruit"></feTurbulence>
+<feDisplacementMap in="SourceGraphic" in2="bruit" scale="90" xChannelSelector="R" yChannelSelector="G"></feDisplacementMap>
+<feGaussianBlur stdDeviation="14"></feGaussianBlur>
+</filter>
+<filter id="a-bord" x="-10%" y="-10%" width="120%" height="120%">
+<feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="3" seed="9" result="bruit"></feTurbulence>
+<feDisplacementMap in="SourceGraphic" in2="bruit" scale="14" xChannelSelector="R" yChannelSelector="G"></feDisplacementMap>
+</filter>
+<filter id="a-etoiles" x="0" y="0" width="100%" height="100%">
+<feTurbulence type="fractalNoise" baseFrequency="0.42" numOctaves="1" seed="21"></feTurbulence>
+<feColorMatrix type="matrix" values="0 0 0 0 0.85  0 0 0 0 1  0 0 0 0 0.92  24 0 0 0 -17.9"></feColorMatrix>
+</filter>
+<filter id="a-poussiere" x="0" y="0" width="100%" height="100%">
+<feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="1" seed="3"></feTurbulence>
+<feColorMatrix type="matrix" values="0 0 0 0 0.6  0 0 0 0 0.95  0 0 0 0 0.8  0 18 0 0 -12.9"></feColorMatrix>
+</filter>
+<filter id="a-grain" x="0" y="0" width="100%" height="100%">
+<feTurbulence type="fractalNoise" baseFrequency="0.75" numOctaves="2" seed="5"></feTurbulence>
+<feColorMatrix type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.35 -0.12"></feColorMatrix>
+</filter>
+<filter id="a-halo" x="-100%" y="-100%" width="300%" height="300%">
+<feGaussianBlur stdDeviation="16"></feGaussianBlur>
+</filter>
+<linearGradient id="a-voie" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0" stop-color="#1bae93" stop-opacity="0"></stop>
+<stop offset="0.5" stop-color="#1bae93" stop-opacity="0.5"></stop>
+<stop offset="1" stop-color="#1bae93" stop-opacity="0"></stop>
+</linearGradient>
+<mask id="a-phase">
+<rect x="0" y="0" width="390" height="844" fill="#000000"></rect>
+<circle cx="306" cy="236" r="24" fill="#ffffff"></circle>
+<circle cx="290" cy="228" r="22" fill="#000000"></circle>
+</mask>
+</defs>
+<rect width="390" height="844" fill="#051e26"></rect>
+<g filter="url(#a-wash)">
+<ellipse cx="200" cy="640" rx="330" ry="230" fill="#0c3f41"></ellipse>
+<ellipse cx="110" cy="520" rx="220" ry="140" fill="#105352" opacity="0.85"></ellipse>
+<ellipse cx="300" cy="580" rx="200" ry="120" fill="#16877b" opacity="0.5"></ellipse>
+<ellipse cx="60" cy="120" rx="160" ry="120" fill="#092e34"></ellipse>
+<rect x="-80" y="230" width="620" height="120" fill="url(#a-voie)" transform="rotate(-38 195 290)"></rect>
+</g>
+<rect width="390" height="560" filter="url(#a-poussiere)" opacity="0.45"></rect>
+<rect width="390" height="560" filter="url(#a-etoiles)" opacity="0.9"></rect>
+<g fill="#f8f7e9">
+<circle cx="48" cy="92" r="1.6"></circle>
+<circle cx="132" cy="58" r="1.2"></circle>
+<circle cx="238" cy="176" r="1.7"></circle>
+<circle cx="344" cy="318" r="1.4"></circle>
+<circle cx="70" cy="300" r="1.3"></circle>
+<circle cx="176" cy="492" r="1.5"></circle>
+<circle cx="352" cy="66" r="1.2"></circle>
+</g>
+<g>
+<circle cx="52" cy="214" r="1.6" fill="#f7c6ab"></circle>
+<circle cx="256" cy="506" r="1.5" fill="#d88fa9"></circle>
+<circle cx="330" cy="454" r="1.4" fill="#e2d37a"></circle>
+<circle cx="150" cy="150" r="1.4" fill="#9fe3cf"></circle>
+<circle cx="30" cy="470" r="1.5" fill="#9fe3cf"></circle>
+</g>
+<circle cx="306" cy="236" r="30" fill="#ee4159" opacity="0.35" filter="url(#a-halo)"></circle>
+<circle cx="306" cy="236" r="24" fill="#ee4159" opacity="0.16"></circle>
+<rect x="0" y="0" width="390" height="844" fill="#ee4159" mask="url(#a-phase)"></rect>
+<g filter="url(#a-bord)">
+<path d="M-20 570 C40 536 90 544 140 560 C190 576 230 534 290 540 C340 545 380 526 420 536 L420 860 L-20 860 Z" fill="#0a3438"></path>
+<path d="M-20 622 C60 598 120 612 190 622 C260 632 320 602 420 614 L420 860 L-20 860 Z" fill="#072a30"></path>
+<path d="M-20 700 C80 686 160 692 230 700 C300 708 350 692 420 698 L420 860 L-20 860 Z" fill="#041a21"></path>
+</g>
+<circle cx="195" cy="660" r="80" fill="#f7c6ab" opacity="0.2" filter="url(#a-halo)"></circle>
+<g filter="url(#a-bord)">
+<path d="M183 676 C175 654 189 644 194 622 C202 642 218 652 209 676 Z" fill="#f7c6ab"></path>
+<path d="M190 676 C187 664 194 656 196 644 C201 656 207 664 203 676 Z" fill="#ee4159" opacity="0.85"></path>
+</g>
+<path d="M172 680 L220 680" stroke="#2a1f1c" stroke-width="5" stroke-linecap="round"></path>
+<rect width="390" height="844" filter="url(#a-grain)" opacity="0.5"></rect>
+</svg>
+<div style="position: absolute; left: 0; top: 64px; width: 390px; display: flex; flex-direction: column; align-items: center; gap: 6px">
+<div style="font-size: 13px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #a6bdb9">Séance en cours</div>
+<div style="font-family: 'Alegreya', Georgia, serif; font-size: 24px">Pharmacocinétique</div>
+<div style="padding: 4px 14px; border: 1px solid rgba(166,189,185,0.55); border-radius: 999px; font-size: 14px; color: #dbe7d3">QCM</div>
+</div>
+<div style="position: absolute; left: 0; top: 312px; width: 390px; display: flex; flex-direction: column; align-items: center; gap: 2px">
+<div style="font-family: 'Alegreya', Georgia, serif; font-size: 112px; line-height: 1; letter-spacing: 0.01em; font-variant-numeric: lining-nums tabular-nums; text-shadow: 0 2px 24px rgba(5,30,38,0.8)">17:42</div>
+<div style="font-size: 16px; color: #a6bdb9">sur 25 minutes</div>
+</div>
+<div style="position: absolute; left: 96px; top: 640px; width: 40px; height: 40px; border-radius: 50%; border: 1.5px solid #f7c6ab; box-sizing: border-box; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 15px; background: rgba(5,30,38,0.7)">M</div>
+<div style="position: absolute; left: 254px; top: 640px; width: 40px; height: 40px; border-radius: 50%; border: 1.5px solid #f7c6ab; box-sizing: border-box; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 15px; background: rgba(5,30,38,0.7)">S</div>
+<div style="position: absolute; left: 175px; top: 572px; width: 40px; height: 40px; border-radius: 50%; border: 1.5px solid #f7c6ab; box-sizing: border-box; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 15px; background: rgba(5,30,38,0.7)">I</div>
+<div style="position: absolute; left: 28px; top: 712px; width: 334px; display: flex; flex-direction: column; gap: 18px">
+<div style="text-align: center; font-size: 15px; color: #dbe7d3">Trois compagnons révisent autour du feu</div>
+<div style="display: flex; gap: 12px">
+<button type="button" style="flex-grow: 1; height: 52px; border-radius: 26px; border: 1.5px solid rgba(248,247,233,0.7); background: rgba(5,30,38,0.55); color: #f8f7e9; font-family: inherit; font-size: 17px; font-weight: 500">Pause</button>
+<button type="button" style="flex-grow: 1; height: 52px; border-radius: 26px; border: 0; background: #f8f7e9; color: #051e26; font-family: inherit; font-size: 17px; font-weight: 700">Terminer</button>
+</div>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+renderVals() {
+return {};
+}
+}
+</script>
+</body>
+</html>

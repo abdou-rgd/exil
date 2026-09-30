@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Séance en cours, direction Pixel et aquarelle</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;500;600&family=Alegreya+Sans:wght@400;500;700&display=swap">
+<style>
+body{margin:0;font-family:'Alegreya Sans','Trebuchet MS',sans-serif;background:#373448;color:#f7e9d7}
+</style>
+</helmet>
+<div style="position: relative; width: 390px; height: 844px; box-sizing: border-box; overflow: hidden; background: #494558; color: #f7e9d7; font-variant-numeric: lining-nums">
+<svg aria-hidden="true" width="390" height="844" viewBox="0 0 390 844" style="position: absolute; left: 0; top: 0">
+<defs>
+<filter id="c-lavis" x="-30%" y="-30%" width="160%" height="160%">
+<feTurbulence type="fractalNoise" baseFrequency="0.012" numOctaves="3" seed="17" result="bruit"></feTurbulence>
+<feDisplacementMap in="SourceGraphic" in2="bruit" scale="80" xChannelSelector="R" yChannelSelector="G"></feDisplacementMap>
+<feGaussianBlur stdDeviation="10"></feGaussianBlur>
+</filter>
+<filter id="c-nuage" x="-30%" y="-100%" width="160%" height="300%">
+<feTurbulence type="fractalNoise" baseFrequency="0.02 0.06" numOctaves="3" seed="5" result="bruit"></feTurbulence>
+<feDisplacementMap in="SourceGraphic" in2="bruit" scale="26" xChannelSelector="R" yChannelSelector="G"></feDisplacementMap>
+<feGaussianBlur stdDeviation="2.2"></feGaussianBlur>
+</filter>
+<filter id="c-bord" x="-10%" y="-10%" width="120%" height="120%">
+<feTurbulence type="fractalNoise" baseFrequency="0.03" numOctaves="3" seed="23" result="bruit"></feTurbulence>
+<feDisplacementMap in="SourceGraphic" in2="bruit" scale="16" xChannelSelector="R" yChannelSelector="G"></feDisplacementMap>
+</filter>
+<filter id="c-pigment" x="0" y="0" width="100%" height="100%">
+<feTurbulence type="fractalNoise" baseFrequency="0.045" numOctaves="4" seed="8"></feTurbulence>
+<feColorMatrix type="matrix" values="0 0 0 0 1  0 0 0 0 0.92  0 0 0 0 0.86  0 0 0 1.5 -0.62"></feColorMatrix>
+</filter>
+<filter id="c-grain" x="0" y="0" width="100%" height="100%">
+<feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="4"></feTurbulence>
+<feColorMatrix type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.4 -0.14"></feColorMatrix>
+</filter>
+<filter id="c-halo" x="-100%" y="-100%" width="300%" height="300%">
+<feGaussianBlur stdDeviation="18"></feGaussianBlur>
+</filter>
+</defs>
+<rect width="390" height="844" fill="#5a5270"></rect>
+<g filter="url(#c-lavis)">
+<ellipse cx="195" cy="60" rx="300" ry="120" fill="#494558"></ellipse>
+<ellipse cx="120" cy="230" rx="280" ry="110" fill="#9a62a6"></ellipse>
+<ellipse cx="300" cy="300" rx="240" ry="90" fill="#be72b4"></ellipse>
+<ellipse cx="160" cy="380" rx="300" ry="80" fill="#d88fa9"></ellipse>
+<ellipse cx="240" cy="450" rx="300" ry="70" fill="#f7c6ab"></ellipse>
+</g>
+<circle cx="262" cy="452" r="46" fill="#fbe3c8" opacity="0.7" filter="url(#c-halo)"></circle>
+<circle cx="262" cy="452" r="15" fill="#fdf0dc"></circle>
+<g filter="url(#c-nuage)">
+<ellipse cx="90" cy="170" rx="130" ry="9" fill="#e7a9c4" opacity="0.8"></ellipse>
+<ellipse cx="300" cy="226" rx="120" ry="7" fill="#f2bfd0" opacity="0.75"></ellipse>
+<ellipse cx="150" cy="300" rx="150" ry="8" fill="#f7c6ab" opacity="0.7"></ellipse>
+<ellipse cx="330" cy="120" rx="90" ry="7" fill="#b58bc4" opacity="0.7"></ellipse>
+<ellipse cx="60" cy="372" rx="110" ry="6" fill="#fbdcc4" opacity="0.7"></ellipse>
+</g>
+<rect width="390" height="500" filter="url(#c-pigment)" opacity="0.35"></rect>
+<g filter="url(#c-bord)">
+<path d="M-20 470 C30 430 70 400 120 426 C160 446 190 380 240 404 C280 422 320 440 420 410 L420 860 L-20 860 Z" fill="#7a6a8c"></path>
+<path d="M-20 516 C40 480 100 470 150 500 C200 530 250 470 310 486 C350 496 390 506 420 496 L420 860 L-20 860 Z" fill="#60566a"></path>
+<path d="M-20 566 C50 540 120 548 180 560 C250 574 310 540 420 552 L420 860 L-20 860 Z" fill="#494558"></path>
+<path d="M-20 604 C70 590 150 596 220 602 C290 608 350 594 420 598 L420 860 L-20 860 Z" fill="#373448"></path>
+</g>
+<g stroke="#494558" stroke-width="2" stroke-linecap="round" fill="none">
+<path d="M22 604 L19 592"></path>
+<path d="M27 604 L29 594"></path>
+<path d="M112 602 L110 591"></path>
+<path d="M117 602 L120 593"></path>
+<path d="M196 606 L194 595"></path>
+<path d="M280 604 L278 593"></path>
+<path d="M285 604 L288 595"></path>
+<path d="M366 600 L364 589"></path>
+<path d="M371 600 L373 591"></path>
+</g>
+<rect width="390" height="844" filter="url(#c-grain)" opacity="0.5"></rect>
+</svg>
+<div style="position: absolute; left: 16px; top: 56px; padding: 10px 14px; box-sizing: border-box; background: rgba(29,26,43,0.9); border: 2px solid #f7e9d7; border-radius: 6px; box-shadow: inset 0 0 0 2px #60566a; display: flex; flex-direction: column; gap: 2px">
+<div style="font-family: 'Pixelify Sans', 'Courier New', monospace; font-size: 20px; line-height: 1.15">Pharmacocinétique</div>
+<div style="font-size: 14px; color: #e0d3c8">QCM · niveau 12</div>
+</div>
+<div style="position: absolute; left: 0; top: 524px; width: 390px; display: flex; justify-content: center; align-items: flex-end; gap: 18px">
+<img src="/_blob/d9e6977ef5e1dada02e6d52f31408936" alt="Compagne en cape à capuche" width="64" height="80" style="image-rendering: pixelated; display: block">
+<img src="/_blob/a67397e084de5c852c76ecbe5a4f36a6" alt="Compagnon au grand chapeau" width="64" height="80" style="image-rendering: pixelated; display: block">
+<img src="/_blob/9f166c09cc1d76f512268b3bb318a687" alt="Compagne en robe claire" width="64" height="80" style="image-rendering: pixelated; display: block">
+<img src="/_blob/8fb480527aff24d96673e6c54bcc5b92" alt="Compagnon en armure" width="64" height="80" style="image-rendering: pixelated; display: block">
+</div>
+<div style="position: absolute; left: 16px; top: 624px; width: 358px; height: 204px; box-sizing: border-box; padding: 14px 16px; background: rgba(29,26,43,0.93); border: 2px solid #f7e9d7; border-radius: 6px; box-shadow: inset 0 0 0 2px #60566a; display: flex; flex-direction: column; gap: 10px">
+<div style="display: flex; justify-content: space-between; align-items: baseline">
+<div style="font-family: 'Pixelify Sans', 'Courier New', monospace; font-size: 16px; letter-spacing: 0.04em">Séance en cours</div>
+<div style="font-size: 14px; color: #e0d3c8">quatre compagnons en route</div>
+</div>
+<div style="display: flex; align-items: flex-end; justify-content: space-between">
+<div style="font-family: 'Pixelify Sans', 'Courier New', monospace; font-weight: 500; font-size: 58px; line-height: 0.95; font-variant-numeric: tabular-nums">17:42</div>
+<div style="font-size: 14px; color: #e0d3c8; padding-bottom: 6px">sur 25 minutes</div>
+</div>
+<div style="display: grid; grid-template-columns: repeat(25, minmax(0, 1fr)); gap: 3px; height: 12px">
+<div style="background: #f7c6ab"></div>
+<div style="background: #f7c6ab"></div>
+<div style="background: #f7c6ab"></div>
+<div style="background: #f7c6ab"></div>
+<div style="background: #f7c6ab"></div>
+<div style="background: #f7c6ab"></div>
+<div style="background: #f7c6ab"></div>
+<div style="background: #4d4760"></div>
+<div style="background: #4d4760"></div>
+<div style="background: #4d4760"></div>
+<div style="background: #4d4760"></div>
+<div style="background: #4d4760"></div>
+<div style="background: #4d4760"></div>
+<div style="background: #4d4760"></div>
+<div style="background: #4d4760"></div>
+<div style="background: #4d4760"></div>
+<div style="background: #4d4760"></div>
+<div style="background: #4d4760"></div>
+<div style="background: #4d4760"></div>
+<div style="background: #4d4760"></div>
+<div style="background: #4d4760"></div>
+<div style="background: #4d4760"></div>
+<div style="background: #4d4760"></div>
+<div style="background: #4d4760"></div>
+<div style="background: #4d4760"></div>
+</div>
+<div style="display: flex; gap: 10px; margin-top: 2px">
+<button type="button" style="flex-grow: 1; height: 48px; border-radius: 4px; border: 2px solid #f7e9d7; background: transparent; color: #f7e9d7; font-family: 'Pixelify Sans', 'Courier New', monospace; font-size: 18px">Pause</button>
+<button type="button" style="flex-grow: 1; height: 48px; border-radius: 4px; border: 2px solid #f7e9d7; background: #f7e9d7; color: #1d1a2b; font-family: 'Pixelify Sans', 'Courier New', monospace; font-size: 18px; font-weight: 600">Terminer</button>
+</div>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+renderVals() {
+return {};
+}
+}
+</script>
+</body>
+</html>

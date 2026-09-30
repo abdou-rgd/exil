@@ -1,0 +1,15 @@
+"variante","profil","heures","temps_seul_relatif","xp_relatif_moy","xp_relatif_et","xp_moyenne","niveau","part_minutes_pct","part_methode_pct","part_regularite_pct","part_engagements_pct","regularite_moyenne"
+"A : le temps d'abord","Marathonienne (8 h, 6 j/sem)",547,3.22,1.94635526504409,0.105028212672602,47586,42,63,8,15,14,0.82
+"A : le temps d'abord","Régulière (3 h, 5 j/sem)",170,1,1,0,24491,29,56,7,13,25,0.81
+"A : le temps d'abord","Bachoteur sur 4 semaines (5 h 30 par jour)",171,1,0.76197270369819,0.03455333181183,18627,25,63,8,10,19,0.36
+"A : le temps d'abord","Week-end seulement (2 × 7 h 30)",171,1.01,0.712294919059501,0.0493747401886929,17411,24,56,7,11,25,0.7
+"A : le temps d'abord","Irrégulier (3 h, un jour sur deux au hasard)",126,0.74,0.653303805459061,0.0862265691032582,15976,23,63,8,9,20,0.48
+"A : le temps d'abord","Petits pas (1 h, 6 j/sem)",69,0.4,0.579980150581555,0.0342156139734463,14179,22,44,5,10,41,0.83
+"A : le temps d'abord","Bachoteur sur 2 semaines (10 h 50 par jour)",171,1,0.512756215186859,0.023651655749204,12534,20,68,8,8,16,0.26
+"B : les engagements d'abord","Marathonienne (8 h, 6 j/sem)",547,3.22,1.59557969622113,0.106857387479782,40619,38,47,6,11,37,0.82
+"B : les engagements d'abord","Régulière (3 h, 5 j/sem)",170,1,1,0,25528,30,35,4,8,53,0.81
+"B : les engagements d'abord","Petits pas (1 h, 6 j/sem)",69,0.4,0.725269798691593,0.0539502410678073,18461,25,22,3,5,70,0.83
+"B : les engagements d'abord","Bachoteur sur 4 semaines (5 h 30 par jour)",171,1,0.692979542309844,0.0383687214023955,17638,25,43,5,7,46,0.36
+"B : les engagements d'abord","Week-end seulement (2 × 7 h 30)",171,1.01,0.688558804856164,0.0580196962119658,17521,25,35,4,7,53,0.7
+"B : les engagements d'abord","Irrégulier (3 h, un jour sur deux au hasard)",126,0.74,0.608375044580744,0.0902597795611814,15490,23,42,5,6,46,0.48
+"B : les engagements d'abord","Bachoteur sur 2 semaines (10 h 50 par jour)",171,1,0.436424354035716,0.0249510321534342,11107,19,48,6,5,41,0.26

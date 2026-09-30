@@ -1,0 +1,18 @@
+{
+  "v": 3,
+  "createdOnFiles": {"v": 1, "at": "2026-09-30T00:25:00+02:00"},
+  "title": "Planche DA — RPG de révision",
+  "launch": {"view": "canvas"},
+  "pages": [],
+  "boards": {
+    "Main.dc.html": {"x": 0, "y": 0, "w": 1200, "h": 844, "title": "Palette et typographie"},
+    "A-Veillee.dc.html": {"x": 1280, "y": 0, "w": 390, "h": 844, "title": "A · Veillée"},
+    "B-Carnet.dc.html": {"x": 1750, "y": 0, "w": 390, "h": 844, "title": "B · Carnet de route"},
+    "C-Pixel.dc.html": {"x": 2220, "y": 0, "w": 390, "h": 844, "title": "C · Pixel et aquarelle"}
+  },
+  "order": ["Main.dc.html", "A-Veillee.dc.html", "B-Carnet.dc.html", "C-Pixel.dc.html"],
+  "notes": {
+    "titre-directions": {"x": 1280, "y": -300, "text": "Le même écran de séance, trois directions", "kind": "title1", "maxW": 1330}
+  },
+  "designSystems": []
+}

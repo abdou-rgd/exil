@@ -1,0 +1,4 @@
+"estimateur","moyenne","ecart_type","erreur_quadratique"
+"Naïf (x choisi librement)",0.450930229976083,0.0333938998384851,0.302768195319702
+"Effet de la suggestion tirée au sort",0.0504052098936991,0.0340377456413873,NA
+"Corrigé (effet suggestion / différence de suivi)",0.166331573006946,0.112240142640212,0.113144070320441
