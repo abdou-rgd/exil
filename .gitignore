@@ -10,3 +10,5 @@ supabase/.vault.sql
 .agents/
 .claude/skills/
 skills-lock.json
+# Écrits personnels d'Abdallah, jamais dans le dépôt
+textes/

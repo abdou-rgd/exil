@@ -36,7 +36,7 @@ p <- list(
   alpha      = 0.07,      # vitesse d'adaptation du score de régularité R (mémoire d'environ 3 semaines)
   R_depart   = 0.5,       # score de régularité de départ, neutre
   part_active = 0.5,      # part de séances en méthodes actives (comme en 01)
-  w_actif = 0.25, w_regul = 0.25, w_espace = 0.10,  # bonus additifs sur l'XP des minutes
+  w_actif = 0, w_regul = 0.25, w_espace = 0,  # bonus additifs sur l'XP des minutes ; méthode et espacement retirés le 30/09/2026 (Abdallah : l'app pousse à travailler, pas à choisir une méthode)
   mult_max = 1.5,         # plafond du multiplicateur
   p_espace = 0.6,         # probabilité d'une séance d'espacement, par jour travaillé
   p_espace_intense = 0.3, # idem pour les bachoteurs en phase intensive

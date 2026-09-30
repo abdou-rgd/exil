@@ -207,3 +207,6 @@
 3. **Certaines créatures deviennent des voisines** du château une fois vaincues (le sanglier apprivoisé, l'ours qui revient pour le miel, le géant qui salue) ; la plupart restent des adversaires.
 
 Les six classes et le bestiaire d'automne servent de base de travail ; Abdallah peut encore les amender.
+4. **Les classes ne sont liées à aucune habitude ni méthode de travail.** Chacun travaille comme il veut ; les colonnes « habitude remarquée » ci-dessus sont abandonnées. Les classes gardent leur loi, leur pouvoir, leurs limites, leur moment dans les récits et leur place au château.
+5. **Le dimanche s'appelle l'Aurum Rubrum** (« le rouge doré ») : la lune rouge et son anneau d'or. Les créatures y sont plus fortes, et le boss de la semaine se résout à 14 h.
+6. **Narration indirecte**, à la manière de Dark Souls ou de Shadow Slave : le lore ne s'expose jamais, il passe par les dialogues, les descriptions d'objets, les paysages et les lieux.
