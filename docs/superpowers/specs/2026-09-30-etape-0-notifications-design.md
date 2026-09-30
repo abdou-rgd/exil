@@ -70,6 +70,7 @@ Pile de la passation : Vite, React, TypeScript, vite-plugin-pwa en stratégie `i
 2. **Distribution**, par pg_cron toutes les 10 secondes, dans la fonction privée `distribuer()` :
    - elle ne fait rien si l'interrupteur `envoi_actif` est éteint ;
    - **reprise** : les alertes `en_cours` depuis plus de 60 s repassent dans le lot si `tentatives < 3`, sinon elles passent à `echouee` ;
+   - **péremption** : une alerte `prevue` en retard de plus de 10 minutes, par exemple après une panne ou une mise en pause du projet, passe à `echouee` au lieu d'être envoyée à contretemps ;
    - **sélection** : les alertes `prevue` dont l'heure est passée (au plus 50, `FOR UPDATE SKIP LOCKED`) passent à `en_cours`, avec `prise_a = now()` et `tentatives + 1` ;
    - **appel**, seulement si le lot n'est pas vide : `net.http_post` vers l'Edge Function avec la liste des identifiants, le secret partagé en en-tête et un délai de 15 000 ms.
 3. **Envoi**, par l'Edge Function `envoyer`, déployée avec `--no-verify-jwt` :
@@ -130,6 +131,7 @@ Toutes les tables ont RLS activé. Les tables du schéma `public` ne sont lisibl
 - La clé secrète Supabase, la clé VAPID privée et le secret partagé ne figurent jamais dans le code ni dans git. La clé VAPID privée et le secret partagé sont dans les secrets de l'Edge Function ; le secret partagé est aussi dans le coffre (Vault) de Supabase, où `distribuer()` le lit. Abdallah les dépose lui-même avec les commandes fournies dans le plan. Le secret partagé est changé à la fin de la campagne, car il transite par la file de pg_net.
 - Seule la clé publiable est dans l'app. La clé VAPID publique l'est aussi, ce qui est normal.
 - Plafonds : 30 alertes en attente par compte, 300 au total, et l'interrupteur `envoi_actif` pour tout arrêter.
+- `enregistrer_abonnement` n'accepte que les adresses des services de notification connus (`*.push.apple.com`, `fcm.googleapis.com`, `*.push.services.mozilla.com`). Sans cette limite, un attaquant pourrait faire envoyer par l'Edge Function des requêtes vers n'importe quelle adresse.
 - Le **test d'attaque** est passé avant la mise en ligne (section 9).
 - Le Security Advisor de Supabase est consulté avant chaque mise en ligne.
 
@@ -144,7 +146,11 @@ Toutes les tables ont RLS activé. Les tables du schéma `public` ne sont lisibl
 
 Les amis prolongent la mesure quand ils installent le prototype jouable. Le conseiller relit ce test avant qu'il ait lieu.
 
-**Échec** : alerte perdue, alerte échouée, ou accusé reçu plus de 30 s après l'heure prévue.
+**Retard** : heure de réception notée par le téléphone, corrigée du décalage d'horloge, moins l'heure prévue. Si le décalage est inconnu, on prend l'heure d'arrivée de l'accusé sur le serveur, ce qui donne une borne haute. L'heure du téléphone passe en premier parce qu'un accusé mis en file hors ligne n'arrive au serveur qu'à la prochaine ouverture de l'app.
+
+**Échec** : alerte perdue, alerte échouée, ou reçue avec un retard de plus de 30 s.
+
+**Alertes comptées dans la règle** : séries de 10 au format classique uniquement. Le test rapide, la série longue et la série déclarative sont suivis à part.
 
 **Situations normales** : toutes, sauf « Concentration, app non autorisée » et « autre ».
 
@@ -164,8 +170,8 @@ La décision se nuance selon le type d'échec. Un abonnement mort serait réglé
 
 Écrits avant le code, conformément aux règles d'Abdallah.
 
-- **Logique pure (Vitest)** : tirage des intervalles (10 alertes, écarts entre 3 et 25 min), statistiques du tableau (médiane, part sous 30 s, alertes perdues, compteur de la règle en trois zones), calcul du décalage d'horloge.
-- **Base de données** : `distribuer()` ne sélectionne jamais une alerte annulée ou déjà envoyée ; une alerte bloquée est reprise puis passe à `echouee` à la troisième tentative ; les plafonds de 30 et de 300 sont respectés ; un jeton ne sert qu'une fois. Ces tests tournent sur une base locale si Docker est disponible, sinon sur le projet Supabase de développement ; le plan tranche.
+- **Logique pure (Vitest)** : statistiques du tableau (médiane, part sous 30 s, alertes perdues, compteur de la règle en trois zones), calcul du décalage d'horloge, lecture et construction des charges de notification, file des accusés.
+- **Base de données** : le tirage des intervalles (10 alertes, écarts entre 3 et 25 min), qui se fait dans la base ; `distribuer()` ne sélectionne jamais une alerte annulée ou déjà envoyée ; une alerte bloquée est reprise puis passe à `echouee` à la troisième tentative ; les plafonds de 30 et de 300 sont respectés ; un jeton ne sert qu'une fois. Ces tests tournent sur une base locale si Docker est disponible, sinon sur le projet Supabase de développement ; le plan tranche.
 - **Test d'attaque**, avec la seule clé publiable et un compte anonyme. Doivent échouer : lire les alertes ou séries d'un autre compte, lire `prive.abonnements` ou `prive.jetons`, écrire directement dans une table, accuser réception avec un faux jeton ou un jeton déjà utilisé, dépasser les plafonds, appeler l'Edge Function sans le secret.
 - **Relecture** par un agent `sonnet` après chaque bloc de code.
 
