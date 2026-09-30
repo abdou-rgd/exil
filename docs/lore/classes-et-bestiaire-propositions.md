@@ -199,3 +199,11 @@
 1. **Les classes doivent-elles toucher aux chiffres ?** Ici, elles ne donnent que récit, trouvailles et finitions. Une autre option est un petit gain fixe, par exemple une braise par semaine où l'habitude est vue. C'est plus motivant, mais cela ajoute un levier à équilibrer.
 2. **La classe se choisit-elle, ou se révèle-t-elle ?** Choix libre après la première semaine, ou proposition du jeu d'après les habitudes observées, toujours modifiable ?
 3. **Les créatures restent-elles des adversaires ?** Elles pourraient aussi devenir des voisins du château, comme le sanglier apprivoisé ou l'ours qui revient pour le miel. Ce choix oriente tout le ton du bestiaire.
+
+## 6. Décisions d'Abdallah (30 septembre 2026)
+
+1. **Les classes ne touchent pas aux chiffres** : récit, une trouvaille par semaine au plus, finitions du château. L'économie de la décision 6 reste intacte.
+2. **La classe se choisit dès l'inscription**, comme dans un RPG classique. (Le changement ultérieur reste à préciser.)
+3. **Certaines créatures deviennent des voisines** du château une fois vaincues (le sanglier apprivoisé, l'ours qui revient pour le miel, le géant qui salue) ; la plupart restent des adversaires.
+
+Les six classes et le bestiaire d'automne servent de base de travail ; Abdallah peut encore les amender.

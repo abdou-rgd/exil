@@ -42,6 +42,7 @@ Planche de direction artistique publiée : https://claude.ai/artifact/Rhkd2EGriz
 9. **Minuteur par horodatages serveur ; toute écriture d'XP passe par des fonctions serveur** (jamais calculée côté client).
 10. **La contrée s'appelle l'Exil.** Le nom public de l'app se décide plus tard ; « Lexile » est une marque déposée dans l'éducation.
 11. **Direction artistique** : A « Veillée » et B « Carnet de route » comme les deux faces d'un système, avec des sprites en pixels pour les personnages. Direction C écartée pour son coût en dessins. Inspiration : la DA pastel de Grimgar, jamais ses images ni ses noms.
+   *Complété le 30/09/2026 :* icône = lune de sang en pixel art, symétrique, fêlée et recollée à l'or (variante D, `scripts/lune-pixel.mjs`). Classes et bestiaire : `docs/lore/classes-et-bestiaire-propositions.md` (six classes fondées sur une loi physique, sans trinité attaque, soin, protection ; choix de la classe à l'inscription ; les classes ne donnent que du récit et des trouvailles ; bestiaire progressif, certaines créatures deviennent voisines du château).
 12. **Pile technique** (rapport 05) : Vite, React, TypeScript, vite-plugin-pwa ; Supabase (Postgres, Auth, Realtime, Edge Functions, pg_cron) en région Paris ; Vercel Hobby. Comptes des six amis créés à la main dans Supabase pour éviter le service d'e-mail intégré.
 
 ## Décisions encore ouvertes
